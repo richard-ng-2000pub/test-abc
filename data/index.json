@@ -1,7 +1,0 @@
-{
-  "schema_version": "murdgrid-site-index-1",
-  "book": "MURDGRID Volume 1",
-  "cases": [
-    {"id": "KG-EX", "title": "The Last Toast", "level": 0, "level_name": "EXAMPLE / TUTORIAL", "file": "KG-EX.json", "steps": 8, "actors": 9, "rooms": 9}
-  ]
-}
