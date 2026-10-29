@@ -116,3 +116,4 @@ This demo **does not generate QR codes**, does not claim your QR pages have been
 ## Rights / technical notes
 
 The code and visual design here are newly authored for this GitHub demo. Uploaded case data and future supplied images remain your book's materials. The client uses vanilla HTML, CSS, and JavaScript without runtime frameworks. Google Fonts are optional; system-font fallbacks work offline. This demo has not been deployed to a live GitHub account.
+
