@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101c2e">
+<meta name="description" content="MURDGRID interactive murder mystery case solution. Reconstruct the blackout step by step or trace one character.">
+<title>MURDGRID — Case Solution</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="sitebar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>MURD<span class="brand-gold">GRID</span></span></div>
+    <div class="header-case"><span class="header-label">INTERACTIVE CASE SOLUTION</span><strong id="headerCode">KG-EX</strong></div>
+    <button class="share" id="shareButton" title="Copy direct link to this case" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V4h12"/></svg> <span>Copy case link</span></button>
+  </header>
+
+  <main class="workspace" id="workspace">
+    <aside class="case-panel" aria-label="Case solution and filters">
+      <div class="case-title-row"><div class="eyebrow" id="caseEyebrow">WORKED EXAMPLE / VOLUME 1</div><h1 id="caseTitle">The Last Toast</h1></div>
+      <section class="answer" aria-label="Official case answer">
+        <div class="answer-header"><span class="answer-glow"></span> OFFICIAL CASE ANSWER</div>
+        <div class="answer-person">
+          <div class="answer-portrait" id="answerPortrait"><span id="answerInitial">D</span></div>
+          <div class="answer-person-name"><small>THE MURDERER</small><strong id="killerName">Amir Qureshi</strong></div>
+        </div>
+        <div class="answer-facts">
+          <div><small>TIME OF DEATH</small><strong id="deathTime">8:08 PM</strong></div>
+          <div><small>CRIME STEP</small><strong id="deathStep">04</strong></div>
+          <div><small>SCENE CELL</small><strong id="crimeCell">F5</strong></div>
+        </div>
+      </section>
+      <div class="filters">
+        <div class="filters-head"><span class="eyebrow">RECONSTRUCTION FILTER</span><span class="data-source">● LIVE MAP</span></div>
+        <div class="mode-switch" role="group" aria-label="Map display mode"><button id="allMode" class="mode-button active" type="button" aria-pressed="true">◉ <span>All characters</span></button><button id="trailMode" class="mode-button" type="button" aria-pressed="false">⌁ <span>Character trail</span></button></div>
+        <div id="actorControls" class="actor-controls" hidden>
+          <label for="actorSelect">CHARACTER</label>
+          <select id="actorSelect" aria-label="Choose character"></select>
+          <label class="full-route"><input id="fullRoute" type="checkbox" checked> Show complete trail</label>
+        </div>
+        <p id="filterSummary" class="filter-summary">All characters move together on the same clock. Select any step below.</p>
+      </div>
+      <div class="current-event">
+        <span class="eyebrow">CURRENT OBSERVATION</span>
+        <p id="eventSummary">Step 0 — positions just before the blackout.</p>
+      </div>
+      <div class="panel-footer"><span>VOLUME 1</span><span id="dataQuality">Verified case dataset</span></div>
+    </aside>
+
+    <section class="visual-panel" aria-label="Interactive reconstruction map">
+      <div class="map-head"><div class="map-head-title"><span id="mapModeCaption">ALL CHARACTER POSITIONS</span><strong id="mapPhase">BEFORE · LIGHTS ON</strong></div><div class="map-head-right"><div class="time-chip"><small>CASE CLOCK</small><strong id="clockLabel">8:00 PM</strong></div><div class="zoom-tools"><button id="zoomOut" type="button" title="Zoom out" aria-label="Zoom out">−</button><button id="zoomReset" type="button" title="Fit full map" aria-label="Fit full map">⤢</button><button id="zoomIn" type="button" title="Zoom in" aria-label="Zoom in">+</button></div></div></div>
+      <div class="map-stage" id="mapStage"><div class="map-art" id="mapArt"></div><div class="zoom-hint">Fit to screen · use + to zoom</div></div>
+      <div class="map-legend"><span><i class="legend-dot legend-char"></i> Character</span><span><i class="legend-dot legend-victim"></i> Victim</span><span><i class="legend-door"></i> Door</span><span><i class="legend-obj"></i> Furniture / obstacle</span><span class="map-context" id="mapContext">Original case geometry</span></div>
+    </section>
+  </main>
+
+  <footer class="timeline">
+    <div class="step-info"><span>BLACKOUT TIMELINE</span><strong id="stepIndicator">STEP 0 / 8</strong></div>
+    <div class="transport"><button id="toStart" type="button" title="First step" aria-label="First step">«</button><button id="prevStep" type="button" title="Previous step" aria-label="Previous step">‹</button><button id="play" class="play" type="button" aria-label="Play">▶</button><button id="nextStep" type="button" title="Next step" aria-label="Next step">›</button><button id="toEnd" type="button" title="Last step" aria-label="Last step">»</button></div>
+    <div class="scrub"><div class="scrub-label"><span>BEFORE</span><span id="scrubTime">8:00 PM</span><span>AFTER</span></div><input id="stepRange" type="range" min="0" max="8" step="1" value="0" aria-label="Select reconstruction step"></div>
+    <div class="speed-wrap"><span>SPEED</span><select id="speed" aria-label="Playback speed"><option value="1600">0.5×</option><option value="1000" selected>1×</option><option value="550">2×</option></select></div>
+  </footer>
+</div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<div id="fatal" class="fatal" hidden><div class="fatal-box"><h2>Case unavailable</h2><p id="fatalText"></p><p>Check the case ID in your link and ensure the corresponding JSON exists in <code>data/</code>.</p></div></div>
+</body>
+</html>
