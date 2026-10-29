@@ -1,0 +1,7 @@
+Put image files here with their original filenames, for example:
+KG-EX_A.png
+KG-EX_B.png
+KG-EX-X1-01.png
+KG-EX-X2-01.png
+The viewer automatically uses them based on the image paths in each case JSON.
+Without these files it displays letter/prop placeholders.
